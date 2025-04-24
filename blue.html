@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Blue Light Filter | Relax Eye</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body.blue-light-filter {
+      filter: sepia(0.5) contrast(0.8) brightness(0.9);
+      transition: filter 0.3s ease;
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-blue-100 to-blue-200 min-h-screen flex flex-col">
+
+  <!-- Header -->
+  <header class="bg-blue-300 text-white p-6 shadow-md text-center">
+    <h1 class="text-3xl font-bold">Relax Eye</h1>
+    <p class="text-lg">Blue Light Filter</p>
+  </header>
+
+  <!-- Main Content -->
+  <main class="flex-grow flex items-center justify-center px-6 py-12">
+    <div class="bg-white rounded-3xl shadow-xl p-8 max-w-4xl w-full">
+      
+      <h2 class="text-2xl font-bold text-blue-700 mb-4 text-center">Protect Your Eyes from Blue Light</h2>
+      <p class="text-gray-700 mb-6 text-lg text-center">Reduce eye strain and improve your sleep by using a blue light filter on your screen.</p>
+
+      <!-- Toggle Button for Blue Light Filter -->
+      <div class="flex justify-center items-center mt-8">
+        <button id="toggleFilter" class="bg-yellow-500 hover:bg-yellow-600 text-white px-6 py-2 rounded-full text-lg font-medium transition shadow">
+          Enable Blue Light Filter
+        </button>
+      </div>
+
+      <!-- Go Back to Home Button -->
+      <div class="mt-6 text-center">
+        <a href="home.html" class="text-blue-600 hover:underline text-lg">← Back to Home</a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-blue-300 text-white text-center py-4">
+    <p>&copy; 2025 Relax Eye. All rights reserved.</p>
+  </footer>
+
+  <!-- JavaScript to Toggle Blue Light Filter -->
+  <script>
+    const toggleButton = document.getElementById('toggleFilter');
+    let isFilterEnabled = false;
+
+    toggleButton.addEventListener('click', function() {
+      isFilterEnabled = !isFilterEnabled;
+
+      // Toggle the filter on or off
+      if (isFilterEnabled) {
+        document.body.classList.add('blue-light-filter');
+        toggleButton.textContent = 'Disable Blue Light Filter';
+      } else {
+        document.body.classList.remove('blue-light-filter');
+        toggleButton.textContent = 'Enable Blue Light Filter';
+      }
+    });
+  </script>
+
+</body

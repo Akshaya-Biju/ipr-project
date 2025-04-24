@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Eye Test Tools | Relax Eye</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-sky-100 to-blue-200 min-h-screen flex flex-col">
+
+  <!-- Header -->
+  <header class="bg-blue-400 text-white text-center p-6 shadow-md">
+    <h1 class="text-3xl font-bold">Relax Eye</h1>
+    <p class="text-lg">Eye Test Tools</p>
+  </header>
+
+  <!-- Main Section -->
+  <main class="flex-grow px-4 py-10 flex flex-col gap-10 items-center">
+
+    <!-- Visual Acuity Test -->
+    <section class="bg-white p-6 rounded-3xl shadow-xl w-full max-w-3xl">
+      <h2 class="text-2xl font-bold text-blue-700 mb-4">1. Visual Acuity Test</h2>
+      <p class="mb-4 text-gray-700">Stand 3-4 meters away from the screen and try reading each line below. Cover one eye at a time.</p>
+      <div class="space-y-2 text-center font-bold">
+        <p class="text-6xl">E</p>
+        <p class="text-5xl">F P</p>
+        <p class="text-4xl">T O Z</p>
+        <p class="text-3xl">L P E D</p>
+        <p class="text-2xl">P E C F D</p>
+        <p class="text-xl">E D F C Z P</p>
+        <p class="text-lg">F E L O P Z D</p>
+      </div>
+    </section>
+
+    <!-- Color Blindness Test -->
+    <section class="bg-white p-6 rounded-3xl shadow-xl w-full max-w-3xl">
+      <h2 class="text-2xl font-bold text-blue-700 mb-4">2. Color Blindness Test</h2>
+      <p class="mb-4 text-gray-700">Can you read the numbers in these images?</p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <img src="blind1.png" alt="Ishihara 9" class="rounded-xl shadow-md">
+        <img src="blind2.jpeg" alt="Ishihara 5" class="rounded-xl shadow-md">
+      </div>
+      <p class="text-sm mt-2 text-gray-500">If you cannot see the numbers, you may want to consult an eye specialist.</p>
+    </section>
+
+    <!-- Astigmatism Test -->
+    <section class="bg-white p-6 rounded-3xl shadow-xl w-full max-w-3xl">
+      <h2 class="text-2xl font-bold text-blue-700 mb-4">3. Astigmatism Test</h2>
+      <p class="mb-4 text-gray-700">Do all lines appear equally dark and sharp?</p>
+      <img src="blind3.jpeg" alt="Astigmatism Test" class="w-full max-w-xs mx-auto rounded-xl shadow-md">
+      <p class="text-sm mt-2 text-gray-500 text-center">If some lines appear blurrier than others, you may have astigmatism.</p>
+    </section>
+
+    <!-- Back to Home -->
+    <div class="text-center mt-4">
+      <a href="home.html" class="text-blue-600 hover:underline text-lg">← Back to Home</a>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-blue-400 text-white text-center py-4">
+    <p>&copy; 2025 Relax Eye. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

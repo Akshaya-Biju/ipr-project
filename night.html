@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Night Mode Scheduler | Relax Eye</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .night-mode {
+      background-color: #1a202c;
+      color: #e2e8f0;
+    }
+  </style>
+</head>
+<body class="bg-blue-100 text-gray-900 min-h-screen flex flex-col transition-all duration-500" id="body">
+
+  <!-- Header -->
+  <header class="bg-blue-400 text-white p-6 text-center">
+    <h1 class="text-3xl font-bold">Relax Eye</h1>
+    <p class="text-lg">Night Mode Scheduler</p>
+  </header>
+
+  <!-- Main Content -->
+  <main class="flex-grow p-8 max-w-3xl mx-auto">
+    <div class="bg-white p-6 rounded-3xl shadow-xl">
+      <h2 class="text-2xl font-bold text-blue-700 mb-4">Schedule Night Mode</h2>
+      <p class="mb-4 text-gray-700">Choose a time when night mode will be activated automatically for a more eye-friendly experience at night.</p>
+
+      <!-- Time Picker -->
+      <label for="nightTime" class="block mb-2 font-medium text-lg">Select time for night mode:</label>
+      <input type="time" id="nightTime" class="border-2 p-2 rounded-xl w-full mb-4"/>
+
+      <!-- Activate Button -->
+      <button onclick="startScheduler()" class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-full font-medium">
+        Set Night Mode
+      </button>
+
+      <!-- Status -->
+      <p id="status" class="mt-4 text-green-600 font-semibold hidden">Night mode will activate at your set time.</p>
+    </div>
+
+    <!-- Back to Home -->
+    <div class="mt-8 text-center">
+      <a href="home.html" class="text-blue-600 hover:underline text-lg">← Back to Home</a>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-blue-400 text-white text-center py-4">
+    <p>&copy; 2025 Relax Eye. All rights reserved.</p>
+  </footer>
+
+  <!-- Script to Activate Night Mode -->
+  <script>
+    let schedulerInterval;
+
+    function startScheduler() {
+      const timeInput = document.getElementById("nightTime").value;
+      const status = document.getElementById("status");
+
+      if (!timeInput) {
+        alert("Please select a time.");
+        return;
+      }
+
+      status.classList.remove("hidden");
+
+      // Clear any previous interval
+      if (schedulerInterval) {
+        clearInterval(schedulerInterval);
+      }
+
+      schedulerInterval = setInterval(() => {
+        const now = new Date();
+        const nowHour = now.getHours();
+        const nowMinute = now.getMinutes();
+
+        const [targetHour, targetMinute] = timeInput.split(":").map(Number);
+
+        if (nowHour === targetHour && nowMinute === targetMinute) {
+          document.getElementById("body").classList.add("night-mode");
+          clearInterval(schedulerInterval);
+        }
+      }, 10000); // Check every 10 seconds
+    }
+  </script>
+
+</body>
+</html>

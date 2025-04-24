@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Screen Time Tracker | Relax Eye</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .timer-display {
+      font-size: 3rem;
+      font-weight: bold;
+      color: #2b6cb0;
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-blue-100 to-blue-200 min-h-screen flex flex-col">
+
+  <!-- Header -->
+  <header class="bg-blue-300 text-white p-6 shadow-md text-center">
+    <h1 class="text-3xl font-bold">Relax Eye</h1>
+    <p class="text-lg">Screen Time Tracker</p>
+  </header>
+
+  <!-- Main Content -->
+  <main class="flex-grow flex items-center justify-center px-6 py-12">
+    <div class="bg-white rounded-3xl shadow-xl p-8 max-w-4xl w-full">
+      
+      <h2 class="text-2xl font-bold text-blue-700 mb-4 text-center">Track Your Screen Time</h2>
+      <p class="text-gray-700 mb-6 text-lg text-center">Manage your screen time and take breaks to protect your eyes.</p>
+
+      <!-- Timer Display -->
+      <div class="text-center mb-6">
+        <p class="timer-display" id="timer">00:00:00</p>
+      </div>
+
+      <!-- Start, Stop, Reset Buttons -->
+      <div class="flex justify-center space-x-6 mt-4">
+        <button id="startButton" class="bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-full text-lg font-medium transition shadow">
+          Start Timer
+        </button>
+        <button id="stopButton" class="bg-red-500 hover:bg-red-600 text-white px-6 py-2 rounded-full text-lg font-medium transition shadow hidden">
+          Stop Timer
+        </button>
+        <button id="resetButton" class="bg-yellow-500 hover:bg-yellow-600 text-white px-6 py-2 rounded-full text-lg font-medium transition shadow">
+          Reset Timer
+        </button>
+      </div>
+
+      <!-- Timer Settings (Optional) -->
+      <div class="text-center mt-6">
+        <p class="text-lg text-blue-700">Set Screen Time Goal (in minutes):</p>
+        <input type="number" id="screenTimeGoal" class="mt-2 border-2 p-2 rounded-xl text-center" placeholder="Goal in minutes" min="1">
+      </div>
+
+      <!-- Go Back to Home Button -->
+      <div class="mt-8 text-center">
+        <a href="home.html" class="text-blue-600 hover:underline text-lg">← Back to Home</a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-blue-300 text-white text-center py-4">
+    <p>&copy; 2025 Relax Eye. All rights reserved.</p>
+  </footer>
+
+  <!-- JavaScript to Control the Timer -->
+  <script>
+    let timerInterval;
+    let seconds = 0;
+    let minutes = 0;
+    let hours = 0;
+
+    // Get elements
+    const timerDisplay = document.getElementById('timer');
+    const startButton = document.getElementById('startButton');
+    const stopButton = document.getElementById('stopButton');
+    const resetButton = document.getElementById('resetButton');
+    const screenTimeGoalInput = document.getElementById('screenTimeGoal');
+
+    // Timer functions
+    function startTimer() {
+      timerInterval = setInterval(function() {
+        seconds++;
+        if (seconds === 60) {
+          seconds = 0;
+          minutes++;
+        }
+        if (minutes === 60) {
+          minutes = 0;
+          hours++;
+        }
+        timerDisplay.textContent = formatTime(hours, minutes, seconds);
+      }, 1000);
+
+      // Change button visibility
+      startButton.classList.add('hidden');
+      stopButton.classList.remove('hidden');
+    }
+
+    function stopTimer() {
+      clearInterval(timerInterval);
+      startButton.classList.remove('hidden');
+      stopButton.classList.add('hidden');
+    }
+
+    function resetTimer() {
+      clearInterval(timerInterval);
+      seconds = 0;
+      minutes = 0;
+      hours = 0;
+      timerDisplay.textContent = formatTime(hours, minutes, seconds);
+      startButton.classList.remove('hidden');
+      stopButton.classList.add('hidden');
+    }
+
+    function formatTime(hours, minutes, seconds) {
+      return (
+        (hours < 10 ? '0' + hours : hours) +
+        ':' +
+        (minutes < 10 ? '0' + minutes : minutes) +
+        ':' +
+        (seconds < 10 ? '0' + seconds : seconds)
+      );
+    }
+
+    // Button event listeners
+    startButton.addEventListener('click', startTimer);
+    stopButton.addEventListener('click', stopTimer);
+    resetButton.addEventListener('click', resetTimer);
+  </script>
+
+</body>
+</html>

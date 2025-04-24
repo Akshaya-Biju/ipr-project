@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Personalized Eye Care Plan | Relax Eye</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-blue-100 to-blue-200 min-h-screen flex flex-col">
+
+  <!-- Header -->
+  <header class="bg-blue-300 text-white p-6 shadow-md text-center">
+    <h1 class="text-3xl font-bold">Relax Eye</h1>
+    <p class="text-lg">Personalized Eye Care Plan</p>
+  </header>
+
+  <!-- Main Content -->
+  <main class="flex-grow flex items-center justify-center px-6 py-12">
+    <div class="bg-white rounded-3xl shadow-xl p-8 max-w-4xl w-full">
+      
+      <h2 class="text-2xl font-bold text-blue-700 mb-4 text-center">Create Your Personalized Eye Care Plan</h2>
+      <p class="text-gray-700 mb-6 text-lg text-center">Fill out the form below to receive a customized eye care plan based on your habits and needs.</p>
+
+      <!-- Form -->
+      <form id="eyeCareForm" class="space-y-6">
+        <!-- Screen Time -->
+        <div class="space-y-2">
+          <label for="screenTime" class="block text-lg font-medium">How many hours do you spend on screens per day?</label>
+          <input type="number" id="screenTime" name="screenTime" class="border-2 p-3 rounded-xl w-full" placeholder="Enter hours" min="0" max="24">
+        </div>
+
+        <!-- Blink Rate -->
+        <div class="space-y-2">
+          <label for="blinkRate" class="block text-lg font-medium">How often do you blink when using screens?</label>
+          <select id="blinkRate" name="blinkRate" class="border-2 p-3 rounded-xl w-full">
+            <option value="rarely">Rarely</option>
+            <option value="sometimes">Sometimes</option>
+            <option value="often">Often</option>
+          </select>
+        </div>
+
+        <!-- Eye Strain -->
+        <div class="space-y-2">
+          <label for="eyeStrain" class="block text-lg font-medium">Do you experience eye strain frequently?</label>
+          <select id="eyeStrain" name="eyeStrain" class="border-2 p-3 rounded-xl w-full">
+            <option value="never">Never</option>
+            <option value="occasionally">Occasionally</option>
+            <option value="frequently">Frequently</option>
+          </select>
+        </div>
+
+        <!-- Diet -->
+        <div class="space-y-2">
+          <label for="diet" class="block text-lg font-medium">Do you consume foods rich in eye-health nutrients (like Vitamin A, C, omega-3, etc.)?</label>
+          <select id="diet" name="diet" class="border-2 p-3 rounded-xl w-full">
+            <option value="never">Never</option>
+            <option value="occasionally">Occasionally</option>
+            <option value="often">Often</option>
+          </select>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="text-center mt-6">
+          <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white px-8 py-3 rounded-full text-lg font-medium transition shadow">
+            Get Personalized Plan
+          </button>
+        </div>
+      </form>
+
+      <!-- Results Section -->
+      <div id="result" class="mt-8 text-center hidden">
+        <h3 class="text-xl font-bold text-blue-700 mb-4">Your Personalized Eye Care Plan</h3>
+        <p id="planDetails" class="text-lg text-gray-700"></p>
+      </div>
+
+      <!-- Go Back to Plan Page -->
+      <div class="mt-8 text-center">
+        <a href="plan2.html" class="text-blue-600 hover:underline text-lg">get plan</a><br>
+        <a href="home.html" class="text-blue-600 hover:underline text-lg">go back to home</a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-blue-300 text-white text-center py-4">
+    <p>&copy; 2025 Relax Eye. All rights reserved.</p>
+  </footer>
+
+  <!-- JavaScript to Handle Form Submission and Display Plan -->
+  <script>
+    document.getElementById("eyeCareForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      const screenTime = parseInt(document.getElementById("screenTime").value);
+      const blinkRate = document.getElementById("blinkRate").value;
+      const eyeStrain = document.getElementById("eyeStrain").value;
+      const diet = document.getElementById("diet").value;
+
+      let plan = "Based on your input, here are some tips to improve your eye health:\n\n";
+
+      // Screen time advice
+      if (screenTime > 6) {
+        plan += "- Reduce your screen time to less than 6 hours a day.\n";
+      } else {
+        plan += "- You’re doing well with your screen time, keep it balanced!\n";
+      }
+
+      // Blink rate advice
+      if (blinkRate === "rarely") {
+        plan += "- Try to blink more often while using screens to keep your eyes hydrated.\n";
+      } else if (blinkRate === "sometimes") {
+        plan += "- You could benefit from blinking more frequently during screen time.\n";
+      }
+
+      // Eye strain advice
+      if (eyeStrain === "frequently") {
+        plan += "- If you experience frequent eye strain, take regular breaks, and follow the 20-20-20 rule.\n";
+      }
+
+      // Diet advice
+      if (diet === "never") {
+        plan += "- Incorporate more eye-healthy foods like carrots, spinach, and fish into your diet.\n";
+      } else if (diet === "occasionally") {
+        plan += "- Try to include more eye-healthy nutrients in your diet, especially vitamin-rich foods.\n";
+      }
+
+      // Show the result
+      document.getElementById("planDetails").textContent = plan;
+      document.getElementById("result").classList.remove("hidden");
+    });
+  </script>
+
+</body>
+</html>
